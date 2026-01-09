@@ -55,7 +55,7 @@ router.get('/assets', (req, res) => {
 });
 
 router.post('/assets', (req, res) => {
-  const { creatorId, divisionId, contentMetadata, financialTag, ipStatus } = req.body;
+  const { creatorId, divisionId, contentMetadata, financialTag, ipStatus, estimatedValue } = req.body;
   
   // Generate ID (Mock)
   const count = OMNIVAEL_ASSETS.length + 1;
@@ -69,7 +69,8 @@ router.post('/assets', (req, res) => {
     legalSignatureStatus: 'NULL',
     status: 'DRAFT',
     contentMetadata,
-    financialTag
+    financialTag,
+    estimatedValue: estimatedValue || 0
   };
 
   OMNIVAEL_ASSETS.push(newAsset);

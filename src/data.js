@@ -155,6 +155,54 @@ const WAYFARER_PROJECTS = [
   }
 ];
 
+const OMNIVAEL_LIBRARY = [
+  {
+    id: 'bk-001',
+    title: 'The Chronicles of Omnivael',
+    author: 'Sara Siron',
+    type: 'Book',
+    cover: 'https://placehold.co/200x300/1a1a1a/gold?text=Chronicles',
+    description: 'The definitive history of the realm, from the First Spark to the Age of Silence.',
+    price: 15.00
+  },
+  {
+    id: 'cm-001',
+    title: 'Wayfarer: Origins',
+    author: 'Nexus Team',
+    type: 'Comic',
+    cover: 'https://placehold.co/200x300/1a1a1a/cyan?text=Origins',
+    description: 'Follow the first Wayfarer as they discover the breach in the sky.',
+    price: 4.99
+  },
+  {
+    id: 'st-001',
+    title: 'The Merchant of Svit',
+    author: 'J. Doe',
+    type: 'Story',
+    cover: 'https://placehold.co/200x300/1a1a1a/orange?text=Merchant',
+    description: 'A short story about greed, trade, and the hidden cost of magic.',
+    price: 0.99
+  },
+  {
+    id: 'bk-002',
+    title: 'Codex of Laws',
+    author: 'The High Council',
+    type: 'Book',
+    cover: 'https://placehold.co/200x300/2a1a1a/red?text=Laws',
+    description: 'Understanding the legal framework that binds the Five Kingdoms.',
+    price: 12.50
+  },
+  {
+    id: 'cm-002',
+    title: 'Shadows of the Void',
+    author: 'Darkstar',
+    type: 'Comic',
+    cover: 'https://placehold.co/200x300/000000/purple?text=Void',
+    description: 'A graphic novel exploring the darker side of space exploration.',
+    price: 5.99
+  }
+];
+
 module.exports = {
   DIVISIONS,
   OMNIVAEL_ASSETS,
@@ -167,5 +215,6 @@ module.exports = {
   KPI_DATA,
   WAYFARER_ASSETS,
   WAYFARER_VAULT_ASSETS,
-  WAYFARER_PROJECTS
+  WAYFARER_PROJECTS,
+  OMNIVAEL_LIBRARY
 };
