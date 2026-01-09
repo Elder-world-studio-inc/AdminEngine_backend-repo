@@ -173,6 +173,11 @@ const INITIAL_CONTRACTS = [
   { id: '1', assetId: 'asset-001', signer: 'Sara Siron', date: '2026-01-02' },
 ];
 
+const INITIAL_BUDGET_ITEMS = [
+  { id: '1', category: 'Operations', name: 'AT&T Company Phone', allocated: 120.00, actual: 112.00, startDate: '2026-01-01', endDate: '2026-12-31', frequency: 'Monthly' },
+  { id: '2', category: 'Software', name: 'Quickbooks', allocated: 40.00, actual: 39.00, startDate: '2026-01-01', endDate: '2026-12-31', frequency: 'Monthly' },
+];
+
 const CAP_TABLE = {
   founders: 9000000,
   pool: 1000000,
@@ -305,6 +310,7 @@ module.exports = {
   INITIAL_ROYALTY_STREAMS,
   INITIAL_RECEIPTS,
   INITIAL_CONTRACTS,
+  INITIAL_BUDGET_ITEMS,
   CAP_TABLE,
   KPI_DATA,
   WAYFARER_ASSETS,

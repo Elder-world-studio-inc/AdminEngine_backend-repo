@@ -51,6 +51,10 @@ router.get('/contracts', (req, res) => {
   res.json(INITIAL_CONTRACTS);
 });
 
+router.get('/budget', (req, res) => {
+  res.json(INITIAL_BUDGET_ITEMS);
+});
+
 router.get('/cap-table', (req, res) => {
   res.json(CAP_TABLE);
 });
