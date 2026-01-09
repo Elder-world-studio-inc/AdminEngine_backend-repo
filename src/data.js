@@ -70,23 +70,93 @@ const OMNIVAEL_ASSETS = [
 ];
 
 const USERS = [
-  { id: '1', username: 'admin', passwordHash: hash('admin123'), role: 'admin', divisionId: null },
-  { id: '2', username: 'creative', passwordHash: hash('creative123'), role: 'division', divisionId: 'creative' },
-  { id: '3', username: 'ops', passwordHash: hash('ops123'), role: 'division', divisionId: 'operations' },
-  { id: '4', username: 'wayfarer', passwordHash: hash('wayfarer123'), role: 'division', divisionId: 'wayfarer' },
+  { 
+    id: '1', 
+    username: 'admin', 
+    email: 'admin@elderworlds.com',
+    fullName: 'Sara Siron',
+    position: 'CEO',
+    department: 'Executive',
+    status: 'active',
+    passwordHash: hash('admin123'), 
+    role: 'admin', 
+    divisionId: null, 
+    mfaEnabled: true,
+    contactDetails: { phone: '+1-555-0100', location: 'HQ' }
+  },
+  { 
+    id: '2', 
+    username: 'creative', 
+    email: 'creative@elderworlds.com',
+    fullName: 'Creative Lead',
+    position: 'Director',
+    department: 'Creative',
+    status: 'active',
+    passwordHash: hash('creative123'), 
+    role: 'division', 
+    divisionId: 'creative', 
+    mfaEnabled: false,
+    contactDetails: { phone: '+1-555-0101', location: 'Remote' }
+  },
+  { 
+    id: '3', 
+    username: 'ops', 
+    email: 'ops@elderworlds.com',
+    fullName: 'Operations Manager',
+    position: 'Manager',
+    department: 'Operations',
+    status: 'active',
+    passwordHash: hash('ops123'), 
+    role: 'division', 
+    divisionId: 'operations', 
+    mfaEnabled: false,
+    contactDetails: { phone: '+1-555-0102', location: 'HQ' }
+  },
+  { 
+    id: '4', 
+    username: 'wayfarer', 
+    email: 'interactive@elderworlds.com',
+    fullName: 'Tech Lead',
+    position: 'Lead Developer',
+    department: 'Interactive',
+    status: 'active',
+    passwordHash: hash('wayfarer123'), 
+    role: 'division', 
+    divisionId: 'wayfarer', 
+    mfaEnabled: false,
+    contactDetails: { phone: '+1-555-0103', location: 'Remote' }
+  },
   // Slot 1: Nexus Player Example
   { 
     id: '5', 
     username: 'player1', 
+    email: 'player1@example.com',
+    fullName: 'Player One',
+    position: 'Player',
+    department: 'Community',
+    status: 'active',
     passwordHash: hash('player123'), 
     role: 'user', 
     divisionId: null,
     nexus_level: 5,
     nexus_xp: 2500,
     shard_balance: 100,
-    is_elite: true
+    is_elite: true,
+    mfaEnabled: false
   }
 ];
+
+const AUDIT_LOGS = [
+  {
+    id: 'log-1',
+    action: 'SYSTEM_INIT',
+    targetUserId: 'system',
+    performedBy: 'system',
+    timestamp: new Date().toISOString(),
+    details: 'System initialized'
+  }
+];
+
 
 const INITIAL_ASSETS_VALUE = 4250000;
 
@@ -240,5 +310,6 @@ module.exports = {
   WAYFARER_ASSETS,
   WAYFARER_VAULT_ASSETS,
   WAYFARER_PROJECTS,
-  OMNIVAEL_LIBRARY
+  OMNIVAEL_LIBRARY,
+  AUDIT_LOGS
 };
