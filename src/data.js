@@ -114,15 +114,15 @@ const USERS = [
   },
   { 
     id: '4', 
-    username: 'wayfarer', 
+    username: 'interactive', 
     email: 'interactive@elderworlds.com',
     fullName: 'Tech Lead',
     position: 'Lead Developer',
     department: 'Interactive',
     status: 'active',
-    passwordHash: hash('wayfarer123'), 
+    passwordHash: hash('interactive123'), 
     role: 'division', 
-    divisionId: 'wayfarer', 
+    divisionId: 'interactive', 
     mfaEnabled: false,
     contactDetails: { phone: '+1-555-0103', location: 'Remote' }
   },
@@ -143,6 +143,17 @@ const USERS = [
     shard_balance: 100,
     is_elite: true,
     mfaEnabled: false
+  }
+];
+
+const SHAREHOLDERS = [
+  {
+    id: '1',
+    name: 'Sara Siron',
+    type: 'Founder',
+    shares: 9000000,
+    percentage: 90.0,
+    email: 'admin@elderworlds.com'
   }
 ];
 
@@ -317,5 +328,6 @@ module.exports = {
   WAYFARER_VAULT_ASSETS,
   WAYFARER_PROJECTS,
   OMNIVAEL_LIBRARY,
-  AUDIT_LOGS
+  AUDIT_LOGS,
+  SHAREHOLDERS
 };
