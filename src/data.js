@@ -42,6 +42,30 @@ const OMNIVAEL_ASSETS = [
       shardPrice: 50,
       releaseDate: '2026-03-01'
     }
+  },
+  {
+    assetId: 'OM-CM-003',
+    creatorId: '2', // Creative
+    divisionId: 'creative',
+    ipStatus: 'Work_for_Hire',
+    legalSignatureStatus: 'NULL',
+    status: 'DRAFT',
+    contentMetadata: {
+      title: 'Neon Shadows',
+      genre: 'Cyberpunk',
+      type: 'Comic',
+      chapter: 'Issue #1',
+      pages: [
+        'https://placehold.co/600x900/1a1a1a/cyan?text=Cover',
+        'https://placehold.co/600x900/1a1a1a/cyan?text=Page+1',
+        'https://placehold.co/600x900/1a1a1a/cyan?text=Page+2',
+        'https://placehold.co/600x900/1a1a1a/cyan?text=Page+3'
+      ]
+    },
+    financialTag: {
+      shardPrice: 5,
+      releaseDate: '2026-04-01'
+    }
   }
 ];
 

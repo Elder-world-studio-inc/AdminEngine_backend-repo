@@ -1,5 +1,7 @@
 const express = require('express');
 const router = express.Router();
+const multer = require('multer');
+const path = require('path');
 const { authenticateToken } = require('../middleware/auth');
 const { 
   INITIAL_ASSETS_VALUE, 
@@ -13,6 +15,19 @@ const {
   WAYFARER_PROJECTS,
   WAYFARER_VAULT_ASSETS
 } = require('../data');
+
+// Configure Multer for file uploads
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'public/uploads/')
+  },
+  filename: function (req, file, cb) {
+    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
+    cb(null, file.fieldname + '-' + uniqueSuffix + path.extname(file.originalname))
+  }
+});
+
+const upload = multer({ storage: storage });
 
 // Protect all admin routes
 router.use(authenticateToken);
@@ -54,8 +69,36 @@ router.get('/assets', (req, res) => {
   res.json(assets);
 });
 
-router.post('/assets', (req, res) => {
-  const { creatorId, divisionId, contentMetadata, financialTag, ipStatus, estimatedValue } = req.body;
+router.post('/assets', upload.single('file'), (req, res) => {
+  let { creatorId, divisionId, contentMetadata, financialTag, ipStatus, estimatedValue } = req.body;
+  
+  // Parse JSON strings if coming from FormData
+  if (typeof contentMetadata === 'string') {
+    try {
+      contentMetadata = JSON.parse(contentMetadata);
+    } catch (e) {
+      console.error('Error parsing contentMetadata:', e);
+    }
+  }
+  
+  if (typeof financialTag === 'string') {
+    try {
+      financialTag = JSON.parse(financialTag);
+    } catch (e) {
+      console.error('Error parsing financialTag:', e);
+    }
+  }
+
+  // Add file info if uploaded
+  if (req.file) {
+    contentMetadata = {
+      ...contentMetadata,
+      fileUrl: `/uploads/${req.file.filename}`,
+      fileName: req.file.originalname,
+      mimeType: req.file.mimetype,
+      size: req.file.size
+    };
+  }
   
   // Generate ID (Mock)
   const count = OMNIVAEL_ASSETS.length + 1;
