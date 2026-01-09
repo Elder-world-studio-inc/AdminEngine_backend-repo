@@ -16,8 +16,8 @@ const port = process.env.PORT || 4000;
 app.use(cors());
 app.use(express.json());
 
-// Serve Static Frontend Files
-app.use(express.static(path.join(__dirname, '../public')));
+// Serve Static Frontend Files - DISABLED for Pure API Mode
+// app.use(express.static(path.join(__dirname, '../public')));
 
 // Slot 4: Shared API Hub
 app.use('/api/auth', authRoutes);
