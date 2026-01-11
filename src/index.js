@@ -6,6 +6,7 @@ const authRoutes = require('./routes/auth');
 const adminRoutes = require('./routes/admin');
 const nexusRoutes = require('./routes/nexus');
 const omnivaelRoutes = require('./routes/omnivael');
+const adcamRoutes = require('./routes/adcam');
 
 dotenv.config();
 
@@ -31,9 +32,17 @@ app.use('/api/nexus', nexusRoutes);
 // Slot 3: Omnivael
 app.use('/api/omnivael', omnivaelRoutes);
 
-// Catch-all route to serve React Frontend
-app.get(/(.*)/, (req, res) => {
-  res.sendFile(path.join(__dirname, '../public', 'index.html'));
+// Skry Ad Cam
+app.use('/api/adcam', adcamRoutes);
+
+// Health Check Route
+app.get('/', (req, res) => {
+  res.json({ status: 'online', message: 'Elder Ecosystem API' });
+});
+
+// Catch-all 404
+app.use((req, res) => {
+  res.status(404).json({ message: 'Endpoint not found' });
 });
 
 app.listen(port, () => {
