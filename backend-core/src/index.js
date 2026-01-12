@@ -7,12 +7,16 @@ const adminRoutes = require('./routes/admin');
 const nexusRoutes = require('./routes/nexus');
 const omnivaelRoutes = require('./routes/omnivael');
 const adcamRoutes = require('./routes/adcam');
+const initDB = require('./db-init');
 
 dotenv.config();
 
 const path = require('path');
 const app = express();
 const port = process.env.PORT || 4000;
+
+// Initialize Database Migration
+initDB();
 
 app.use(cors());
 app.use(express.json());
