@@ -16,10 +16,19 @@ const app = express();
 const port = process.env.PORT || 4000;
 
 // Initialize Database Migration
-initDB();
+initDB().catch(err => {
+  console.error('❌ Database initialization failed:', err);
+  console.log('🚀 Starting server anyway...');
+});
 
 app.use(cors());
 app.use(express.json());
+
+// Request Logging Middleware
+app.use((req, res, next) => {
+  console.log(`[Request] ${req.method} ${req.url}`);
+  next();
+});
 
 // Serve Static Frontend Files - DISABLED for Pure API Mode
 // app.use(express.static(path.join(__dirname, '../public')));
@@ -49,6 +58,28 @@ app.use((req, res) => {
   res.status(404).json({ message: 'Endpoint not found' });
 });
 
-app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
+const server = app.listen(port, '0.0.0.0', () => {
+  console.log(`✅ Server is running on http://localhost:${port}`);
+  console.log(`📡 Server bound to 0.0.0.0:${port}`);
+});
+
+// Handle server errors
+server.on('error', (err) => {
+  console.error('❌ Server error:', err);
+  if (err.code === 'EADDRINUSE') {
+    console.error(`❌ Port ${port} is already in use`);
+  }
+});
+
+// Handle unhandled promise rejections
+process.on('unhandledRejection', (err) => {
+  console.error('❌ Unhandled Promise Rejection:', err);
+  console.error('Stack:', err.stack);
+});
+
+// Handle uncaught exceptions
+process.on('uncaughtException', (err) => {
+  console.error('❌ Uncaught Exception:', err);
+  console.error('Stack:', err.stack);
+  process.exit(1);
 });
