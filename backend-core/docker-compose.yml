@@ -7,22 +7,7 @@ services:
       - "4000:4000"
     environment:
       - PORT=4000
-      - DATABASE_URL=postgres://postgres:postgres@db:5432/admin_engine_db
+      - DATABASE_URL=postgres://postgres.pxuzibdxqjrgfjbltsnv:Alishaa%40949%23%23%40%40@aws-0-us-west-2.pooler.supabase.com:5432/postgres
       - JWT_SECRET=dev_secret_key_change_in_prod
-      - DB_SSL=false
-    depends_on:
-      - db
+      - DB_SSL=true
     restart: always
-
-  db:
-    image: postgres:15-alpine
-    environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
-      - POSTGRES_DB=admin_engine_db
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-    restart: always
-
-volumes:
-  postgres_data:
